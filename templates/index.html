@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Flask Redis App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>Hello!</h1>
-    <p>This page has been visited {{ count }} times.</p>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<h2>Available Courses</h2>
+<ul>
+    {% for course in courses %}
+    <li>{{ course }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Your Registrations</h2>
+<ul>
+    {% for course in registrations %}
+    <li>{{ course }}</li>
+    {% else %}
+    <li>No courses registered.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
