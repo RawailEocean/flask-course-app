@@ -1,1 +1,1 @@
-# flask-redis-app
+# flask-course-app
