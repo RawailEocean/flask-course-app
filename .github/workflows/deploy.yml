@@ -1,33 +1,26 @@
-name: Deploy Flask App to Azure VM
+name: Deploy to Azure VM
 
 on:
   push:
     branches:
-      - main  # change if you're using a different branch
+      - main  # or 'master', whichever branch you want to auto-deploy
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Set up SSH key
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-
-    - name: Add VM to known hosts
-      run: |
-        ssh-keyscan -H 20.172.233.187 >> ~/.ssh/known_hosts
-
-    - name: Deploy to Azure VM
-      run: |
-        ssh azureuser@20.172.233.187 << 'EOF'
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
           cd flask-course-app
           git pull origin main
           docker-compose down
           docker-compose up --build -d
-        EOF
