@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Drop a Course</h2>
+<form method="POST">
+    <select name="course">
+        {% for course in registrations %}
+        <option value="{{ course }}">{{ course }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Drop</button>
+</form>
+{% endblock %}
