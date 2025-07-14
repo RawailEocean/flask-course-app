@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Register for a Course</h2>
+<form method="POST">
+    <select name="course">
+        {% for course in courses %}
+        <option value="{{ course }}">{{ course }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
