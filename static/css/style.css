@@ -1,18 +1,14 @@
-{% extends "layout.html" %}
-{% block content %}
-<h2>Available Courses</h2>
-<ul>
-    {% for course in courses %}
-    <li>{{ course }}</li>
-    {% endfor %}
-</ul>
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-<h2>Your Registrations</h2>
-<ul>
-    {% for course in registrations %}
-    <li>{{ course }}</li>
-    {% else %}
-    <li>No courses registered.</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+main.container {
+    flex: 1;
+}
+
+h2 {
+    color: #333;
+}
