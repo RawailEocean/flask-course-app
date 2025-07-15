@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>Drop a Course</h2>
-<form method="POST">
-    <select name="course">
-        {% for course in registrations %}
-        <option value="{{ course }}">{{ course }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit">Drop</button>
+<form method="post">
+    <div class="mb-3">
+        <label for="course" class="form-label">Course Name</label>
+        <input type="text" name="course" id="course" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Drop</button>
 </form>
 {% endblock %}
