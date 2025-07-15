@@ -1,8 +1,12 @@
-{% extends "layout.html" %}
+v{% extends "base.html" %}
+{% block title %}Home - FlaskCourse{% endblock %}
 {% block content %}
-<h2 class="text-center mb-4">Welcome to CourseApp</h2>
-<div class="text-center">
-    <a href="{{ url_for('register') }}" class="btn btn-success btn-lg mx-2">Register a Course</a>
-    <a href="{{ url_for('drop') }}" class="btn btn-danger btn-lg mx-2">Drop a Course</a>
+<div class="text-center mt-20">
+    <h2 class="text-5xl font-bold mb-4">Welcome to Flask Course Portal</h2>
+    <p class="text-lg">Register for your courses, meet your teachers, and manage everything easily.</p>
+    <div class="mt-8 space-x-4">
+        <a href="/register/student" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-opacity-80 transition">Register as Student</a>
+        <a href="/register/teacher" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition">Register as Teacher</a>
+    </div>
 </div>
 {% endblock %}
