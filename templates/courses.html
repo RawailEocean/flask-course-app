@@ -1,10 +1,39 @@
 {% extends "base.html" %}
-{% block title %}Available Courses{% endblock %}
+
+{% block title %}Courses{% endblock %}
+
 {% block content %}
-<h2 class="text-3xl font-semibold mb-6">Available Courses</h2>
-<ul class="space-y-2">
-    {% for course in courses %}
-    <li class="p-4 bg-white text-black rounded shadow">{{ course }}</li>
-    {% endfor %}
-</ul>
+    <h2>Courses and Registered Students</h2>
+
+    {% if courses_data %}
+        <div class="course-list-container">
+            {% for course_name, registered_students in courses_data.items() %}
+                <div class="course-item">
+                    <h3>{{ course_name }}</h3>
+                    {% if registered_students %}
+                        <table class="data-table course-students-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Student Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for student in registered_students %}
+                                <tr>
+                                    <td>{{ student.name }}</td>
+                                    <td>{{ student.email }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p class="no-students-message">No students registered for this course yet.</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No courses available or students registered yet.</p>
+    {% endif %}
 {% endblock %}
