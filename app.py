@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Dummy storage
 students = []
 teachers = []
-courses = ["Math", "Physics", "Chemistry", "Computer Science"] # This list still exists for the /courses page
+# Removed: courses = ["Math", "Physics", "Chemistry", "Computer Science"]
 
 def register_student(name, email, course):
     students.append({"name": name, "email": email, "course": course})
@@ -26,10 +26,10 @@ def register_student_page():
     if request.method == "POST":
         name = request.form["name"]
         email = request.form["email"]
-        course = request.form["course"] # Course is now taken directly from text input
+        course = request.form["course"]
         register_student(name, email, course)
         return redirect(url_for("index"))
-    return render_template("register_student.html") # Removed courses=courses
+    return render_template("register_student.html")
 
 @app.route("/register/teacher", methods=["GET", "POST"])
 def register_teacher_page():
@@ -43,22 +43,17 @@ def register_teacher_page():
 
 @app.route("/courses")
 def course_list():
-    # NEW: Organize students by course
+    # Logic remains the same: build courses_with_registered_students ONLY from actual student registrations
     courses_with_registered_students = {}
-    for course_name in courses: # Initialize with predefined courses
-        courses_with_registered_students[course_name] = []
     
-    # Add students to their respective courses
     for student in students:
         course = student["course"]
         if course not in courses_with_registered_students:
-            courses_with_registered_students[course] = [] # Add dynamically entered courses
+            courses_with_registered_students[course] = []
         courses_with_registered_students[course].append(student)
 
-    # Pass both the original course list and the organized student data
     return render_template("courses.html", 
-                           courses=courses, # Original list of courses
-                           courses_data=courses_with_registered_students) # New organized data
+                           courses_data=courses_with_registered_students)
 
 @app.route("/students")
 def view_students():
@@ -71,7 +66,8 @@ def drop():
         course = request.form["course"]
         drop_course(email, course)
         return redirect(url_for("index"))
-    return render_template("drop.html", students=students, courses=courses)
+    # Removed courses=courses from here, as it's no longer needed for a text input
+    return render_template("drop.html", students=students) 
     
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
