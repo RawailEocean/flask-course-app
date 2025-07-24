@@ -1,10 +1,43 @@
 {% extends "base.html" %}
-{% block title %}Drop a Course{% endblock %}
+
+{% block title %}Drop Course{% endblock %}
+
 {% block content %}
-<h2 class="text-3xl font-semibold mb-6">Drop a Course</h2>
-<form method="POST" class="space-y-4 max-w-md">
-    <input name="email" placeholder="Your Email" required type="email" class="w-full p-2 rounded text-black" />
-    <input name="course" placeholder="Course to Drop" required class="w-full p-2 rounded text-black" />
-    <button type="submit" class="bg-white text-black px-4 py-2 rounded hover:bg-opacity-80">Drop Course</button>
-</form>
+    <h2>Drop a Course</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="email">Student Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="course">Course to Drop:</label>
+            <input type="text" id="course" name="course" required placeholder="e.g., Advanced Quantum Physics">
+            <!-- Changed from <select> to <input type="text"> -->
+        </div>
+        <button type="submit" class="submit-button">Drop Course</button>
+    </form>
+
+    {% if students %}
+        <h3 style="margin-top: 40px; color: white;">Currently Registered Students (for reference):</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.course }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="margin-top: 40px;">No students registered yet.</p>
+    {% endif %}
 {% endblock %}
