@@ -22,15 +22,16 @@ main.container {
     width: 100%; /* Ensure it takes full available width up to max-width */
     box-sizing: border-box; /* Include padding in the element's total width and height */
     color: white; /* Set default text color to white for better contrast */
+    text-align: center; /* Center the text within the container */
 }
 
 h2 {
-    color: #eee; /* Lighter color for headings */
+    color: #b5b5b5a4; /* Base color for shiny text, adjusted for effect */
     margin-bottom: 20px; /* Add some space below heading */
 }
 
 p {
-    color: #ccc; /* Lighter color for paragraphs */
+    color: #b5b5b5a4; /* Base color for shiny text, adjusted for effect */
     margin-bottom: 20px; /* Add space below paragraphs */
 }
 
@@ -110,18 +111,44 @@ footer {
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Add shadow to footer */
 }
 
-/* Style for the "Register New Student" link to make it visible */
-.register-student-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff; /* A nice blue color */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px; /* Space from the paragraph above */
-    transition: background-color 0.3s ease;
+/* NEW: Shiny Text CSS */
+.shiny-text {
+    /* The base color of the text when the shine isn't directly over it */
+    color: #b5b5b5a4; /* Adjust this color to change intensity/style */
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    background-size: 200% 100%; /* Makes the gradient wider than the text */
+    -webkit-background-clip: text; /* Clips the background to the text shape */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text itself transparent to show background */
+    display: inline-block; /* Essential for background-clip: text to work properly */
+    animation: shine 5s linear infinite; /* Default animation speed */
+    /* You can use a CSS variable for speed if you want to control it from HTML: */
+    /* animation: shine var(--shine-speed, 5s) linear infinite; */
 }
 
-.register-student-link:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+@keyframes shine {
+    0% {
+        background-position: 100%; /* Start the gradient off to the right */
+    }
+    100% {
+        background-position: -100%; /* Move the gradient off to the left */
+    }
+}
+
+/* .shiny-text.disabled { animation: none; } */
+/* If you need to disable the animation, you'd add/remove this class with JavaScript */
+
+/* Adjust font sizes for better visual impact with shiny effect */
+h2.shiny-text {
+    font-size: 2.5em; /* Larger font for heading */
+    font-weight: bold;
+}
+
+p.shiny-text {
+    font-size: 1.2em; /* Slightly larger font for paragraph */
 }
