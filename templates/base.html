@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Flask Course App{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='glitch_effect.js') }}" defer></script>
 </head>
-<body class="bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 min-h-screen text-gray-800 font-sans">
-    <nav class="flex justify-between items-center px-8 py-4 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-lg">
-        <h1 class="text-2xl font-bold text-gray-900">FlaskCourse</h1>
-        <div class="space-x-4 text-gray-700">
-            <a href="/" class="hover:underline hover:text-indigo-600 transition duration-300">Home</a>
-            <a href="/register/student" class="hover:underline hover:text-indigo-600 transition duration-300">Student Register</a>
-            <a href="/register/teacher" class="hover:underline hover:text-indigo-600 transition duration-300">Teacher Register</a>
-            <a href="/courses" class="hover:underline hover:text-indigo-600 transition duration-300">Courses</a>
-            <a href="/drop" class="hover:underline hover:text-indigo-600 transition duration-300">Drop Course</a>
-        </div>
-    </nav>
+<body>
+    <div class="glitch-background-container">
+        <canvas id="glitchCanvas"></canvas>
+        <div class="glitch-vignette glitch-outer-vignette"></div>
+        <div class="glitch-vignette glitch-center-vignette"></div>
+    </div>
 
-    <main class="p-8">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('register_student_page') }}">Register Student</a></li>
+                <li><a href="{{ url_for('register_teacher_page') }}">Register Teacher</a></li>
+                <li><a href="{{ url_for('course_list') }}">View Courses</a></li>
+                <li><a href="{{ url_for('drop') }}">Drop Course</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
+
+    <footer>
+        <p>&copy; 2024 My App</p>
+    </footer>
+
+    <script>
+        // Initialize the glitch effect once the DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            window.initLetterGlitch('glitchCanvas', {
+                glitchColors: ['#2b4539', '#61dca3', '#61b3dc'], // Customize colors here
+                glitchSpeed: 50, // milliseconds
+                smooth: true, // true for smooth color transitions, false for instant
+                // centerVignette: false, // You can control vignettes via CSS or remove these divs
+                // outerVignette: true,
+            });
+        });
+    </script>
 </body>
 </html>
