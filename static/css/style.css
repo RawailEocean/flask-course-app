@@ -1,4 +1,21 @@
-/* Existing styles from your style.css */
+body {
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+main.container {
+
+    flex: 1;
+}
+h2 {
+    color: #333;
+}
+
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
