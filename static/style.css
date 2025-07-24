@@ -1,22 +1,3 @@
-
-body {
-
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-}
-main.container {
-
-    flex: 1;
-}
-h2 {
-    color: #333;
-}
-
 /* Existing styles from your style.css */
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -25,21 +6,30 @@ body {
     flex-direction: column;
     margin: 0; /* Important for full page background */
     padding: 0; /* Important for full page background */
+    background-color: #000; /* Ensure body background is black to blend with glitch */
 }
 
 main.container {
     flex: 1;
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
-    padding: 20px; /* Add some padding so content isn't at edges */
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background for content */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px;
+    padding: 40px; /* Increased padding for more breathing room */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent for better readability */
+    border-radius: 15px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* More prominent shadow */
+    margin: 40px auto; /* Center the container horizontally and add more vertical margin */
+    max-width: 90%; /* Limit max width to avoid stretching on very large screens */
+    width: 100%; /* Ensure it takes full available width up to max-width */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 h2 {
     color: #333;
+    margin-bottom: 20px; /* Add some space below heading */
+}
+
+p {
+    margin-bottom: 20px; /* Add space below paragraphs */
 }
 
 /* Star Border styles (from previous request, kept here for completeness) */
@@ -48,6 +38,8 @@ h2 {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
+    margin-right: 20px; /* Add space between buttons */
+    margin-top: 20px; /* Add space above buttons */
 }
 
 .border-gradient-bottom {
@@ -84,6 +76,11 @@ h2 {
     padding: 16px 26px;
     border-radius: 20px;
     z-index: 1;
+    /* Ensure content inside is visible and centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px; /* Give buttons a minimum height */
 }
 
 @keyframes star-movement-bottom {
@@ -108,7 +105,7 @@ h2 {
     }
 }
 
-/* NEW: Styles for the Glitch Canvas container */
+/* Styles for the Glitch Canvas container */
 .glitch-background-container {
     position: fixed; /* Fixes it to the viewport */
     top: 0;
@@ -124,6 +121,7 @@ h2 {
     display: block;
     width: 100%;
     height: 100%;
+    opacity: 0.7; /* Reduced opacity for the glitch effect */
 }
 
 .glitch-vignette {
@@ -137,11 +135,11 @@ h2 {
 }
 
 .glitch-outer-vignette {
-    background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%); /* Adjusted outer vignette */
 }
 
 .glitch-center-vignette {
-    background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+    background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 60%); /* Adjusted center vignette */
 }
 
 nav ul {
@@ -154,6 +152,7 @@ nav ul {
     justify-content: center; /* Center the navigation items */
     position: relative; /* Needed for z-index */
     z-index: 3; /* Ensure nav is on top */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow to nav */
 }
 
 nav li a {
@@ -162,6 +161,7 @@ nav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 nav li a:hover {
@@ -170,10 +170,11 @@ nav li a:hover {
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px; /* Increased padding for footer */
     background-color: #333;
     color: white;
     margin-top: auto; /* Pushes footer to the bottom in flex column */
     position: relative; /* Needed for z-index */
     z-index: 3; /* Ensure footer is on top */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Add shadow to footer */
 }
