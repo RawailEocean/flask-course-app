@@ -13,13 +13,15 @@ main.container {
     flex: 1;
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
-    padding: 40px; /* Increased padding for more breathing room */
-    background-color: transparent; /* Changed to transparent */
+    padding: 40px; /* Padding for the content inside this box */
+    /* NEW: Semi-transparent background that fits content */
+    background-color: rgba(255, 255, 255, 0.1); /* Very subtle white transparency */
     border-radius: 15px; /* Slightly more rounded corners */
-    box-shadow: none; /* Removed box shadow as background is transparent */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Subtle shadow for depth */
     margin: 40px auto; /* Center the container horizontally and add more vertical margin */
-    max-width: 90%; /* Limit max width to avoid stretching on very large screens */
-    width: 100%; /* Ensure it takes full available width up to max-width */
+    /* NEW: Make it fit content width, but still responsive */
+    width: fit-content; /* Shrink-wraps content */
+    max-width: 90%; /* Ensures it doesn't get too wide on large screens */
     box-sizing: border-box; /* Include padding in the element's total width and height */
     color: white; /* Set default text color to white for better contrast */
     text-align: center; /* Center the text within the container */
