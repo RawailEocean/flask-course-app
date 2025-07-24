@@ -6,6 +6,8 @@
     <title>{% block title %}My App{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='glitch_effect.js') }}" defer></script>
+
+    <!-- Removed: GSAP CDN Links and Scrambled Text JS -->
 </head>
 <body>
     <div class="glitch-background-container">
@@ -35,15 +37,15 @@
     </footer>
 
     <script>
-        // Initialize the glitch effect once the DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize the glitch effect once all resources (including deferred scripts) are fully loaded
+        window.addEventListener('load', () => {
             window.initLetterGlitch('glitchCanvas', {
                 glitchColors: ['#2b4539', '#61dca3', '#61b3dc'], // Customize colors here
                 glitchSpeed: 50, // milliseconds
                 smooth: true, // true for smooth color transitions, false for instant
-                // centerVignette: false, // You can control vignettes via CSS or remove these divs
-                // outerVignette: true,
             });
+
+            // Removed: Scrambled text initialization
         });
     </script>
 </body>
