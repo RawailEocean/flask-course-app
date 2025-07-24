@@ -13,25 +13,24 @@ main.container {
     flex: 1;
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
-    padding: 40px; /* Padding for the content inside this box */
-    background-color: rgba(255, 255, 255, 0.1); /* Very subtle white transparency */
+    padding: 40px; /* Increased padding for more breathing room */
+    background-color: transparent; /* Changed to transparent */
     border-radius: 15px; /* Slightly more rounded corners */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    box-shadow: none; /* Removed box shadow as background is transparent */
     margin: 40px auto; /* Center the container horizontally and add more vertical margin */
-    width: fit-content; /* Shrink-wraps content */
-    max-width: 90%; /* Ensures it doesn't get too wide on large screens */
+    max-width: 90%; /* Limit max width to avoid stretching on very large screens */
+    width: 100%; /* Ensure it takes full available width up to max-width */
     box-sizing: border-box; /* Include padding in the element's total width and height */
     color: white; /* Set default text color to white for better contrast */
-    text-align: center; /* Center the text within the container */
 }
 
 h2 {
-    color: white; /* Base color for heading - always visible */
+    color: #eee; /* Lighter color for headings */
     margin-bottom: 20px; /* Add some space below heading */
 }
 
 p {
-    color: white; /* Base color for paragraph - always visible */
+    color: #ccc; /* Lighter color for paragraphs */
     margin-bottom: 20px; /* Add space below paragraphs */
 }
 
@@ -111,127 +110,41 @@ footer {
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Add shadow to footer */
 }
 
-/* Shiny Text CSS (always visible with glow/flicker) */
-.shiny-text {
-    color: white; /* Ensures text is always visible */
-    animation: text-glow-flicker 2s linear infinite alternate; /* Apply the new flicker animation */
-}
-
-@keyframes text-glow-flicker {
-    0% {
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), /* Cyan glow */
-                     0 0 10px rgba(0, 255, 255, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), /* Stronger cyan glow */
-                     0 0 20px rgba(0, 255, 255, 0.6),
-                     0 0 30px rgba(255, 0, 255, 0.4); /* Magenta secondary glow */
-    }
-    100% {
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
-                     0 0 10px rgba(0, 255, 255, 0.3);
-    }
-}
-
-/* Adjust font sizes for better visual impact with shiny effect */
-h2.shiny-text {
-    font-size: 2.5em; /* Larger font for heading */
-    font-weight: bold;
-}
-
-p.shiny-text {
-    font-size: 1.2em; /* Slightly larger font for paragraph */
-}
-
-/* Table Styling for data-table */
-.data-table {
-    width: 100%;
-    border-collapse: collapse; /* Removes space between table cells */
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent dark background for table */
-    border-radius: 8px;
-    overflow: hidden; /* Ensures rounded corners apply to content */
-}
-
-.data-table th, .data-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border for rows */
-    color: white; /* Text color for table content */
-}
-
-.data-table th {
-    background-color: rgba(0, 0, 0, 0.5); /* Darker background for table headers */
-    font-weight: bold;
-    color: #00ffff; /* Cyan color for headers */
-}
-
-.data-table tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Subtle highlight on hover */
-}
-
-.data-table tbody tr:last-child td {
-    border-bottom: none; /* No border on the last row */
-}
-
-/* NEW: Form Styling */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between form groups */
-    margin-top: 20px;
-    max-width: 400px; /* Limit form width */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left; /* Align labels and inputs to the left within the form */
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #eee; /* Lighter color for labels */
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group select { /* Include select for other forms if they use it */
-    padding: 10px;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.4); /* Darker input background */
+/* Style for the "Register New Student" link to make it visible */
+.register-student-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* A nice blue color */
     color: white;
-    font-size: 1em;
-    outline: none; /* Remove outline on focus */
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group select:focus {
-    border-color: #00ffff; /* Highlight border on focus */
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker on focus */
-}
-
-.submit-button {
-    padding: 12px 25px;
-    background-color: #007bff; /* Blue submit button */
-    color: white;
-    border: none;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: center; /* Center the button in the form */
-    margin-top: 20px; /* Space above button */
+    margin-top: 20px; /* Space from the paragraph above */
+    transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
+.register-student-link:hover {
     background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* NEW: CSS for Scrambled Text Effect */
+.text-block {
+    /* Add any general styling for the container of the scrambled text if needed */
+    /* For example, if you want a specific width or alignment */
+    text-align: center; /* Center the text block */
+}
+
+.text-block p {
+    /* Ensure the paragraph itself doesn't have conflicting styles */
+    display: inline-block; /* Allow it to shrink-wrap its content */
+    font-size: 2em; /* Make the welcome text larger */
+    font-weight: bold;
+    line-height: 1.2;
+    color: #eee; /* Ensure text is visible */
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.text-block p .char {
+    /* Styles applied to individual characters by SplitText */
+    display: inline-block; /* Important for individual character positioning */
+    /* Add any other character-specific styles here if needed */
 }
