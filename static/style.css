@@ -14,21 +14,23 @@ main.container {
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
     padding: 40px; /* Increased padding for more breathing room */
-    background-color: rgba(255, 255, 255, 0.85); /* Slightly more transparent for better glitch visibility */
+    background-color: transparent; /* Changed to transparent */
     border-radius: 15px; /* Slightly more rounded corners */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* More prominent shadow */
+    box-shadow: none; /* Removed box shadow as background is transparent */
     margin: 40px auto; /* Center the container horizontally and add more vertical margin */
     max-width: 90%; /* Limit max width to avoid stretching on very large screens */
     width: 100%; /* Ensure it takes full available width up to max-width */
     box-sizing: border-box; /* Include padding in the element's total width and height */
+    color: white; /* Set default text color to white for better contrast */
 }
 
 h2 {
-    color: #333;
+    color: #eee; /* Lighter color for headings */
     margin-bottom: 20px; /* Add some space below heading */
 }
 
 p {
+    color: #ccc; /* Lighter color for paragraphs */
     margin-bottom: 20px; /* Add space below paragraphs */
 }
 
@@ -106,4 +108,20 @@ footer {
     position: relative; /* Needed for z-index */
     z-index: 3; /* Ensure footer is on top */
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Add shadow to footer */
+}
+
+/* Style for the "Register New Student" link to make it visible */
+.register-student-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* A nice blue color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px; /* Space from the paragraph above */
+    transition: background-color 0.3s ease;
+}
+
+.register-student-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
