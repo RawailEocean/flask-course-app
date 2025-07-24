@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Flask Course App{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 min-h-screen text-gray-800 font-sans">
-    <nav class="flex justify-between items-center px-8 py-4 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-lg">
-        <h1 class="text-2xl font-bold text-gray-900">FlaskCourse</h1>
-        <div class="space-x-4 text-gray-700">
-            <a href="/" class="hover:underline hover:text-indigo-600 transition duration-300">Home</a>
-            <a href="/register/student" class="hover:underline hover:text-indigo-600 transition duration-300">Student Register</a>
-            <a href="/register/teacher" class="hover:underline hover:text-indigo-600 transition duration-300">Teacher Register</a>
-            <a href="/courses" class="hover:underline hover:text-indigo-600 transition duration-300">Courses</a>
-            <a href="/drop" class="hover:underline hover:text-indigo-600 transition duration-300">Drop Course</a>
-        </div>
-    </nav>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('register_student_page') }}">Register Student</a></li>
+                <li><a href="{{ url_for('register_teacher_page') }}">Register Teacher</a></li>
+                <li><a href="{{ url_for('course_list') }}">View Courses</a></li>
+                <li><a href="{{ url_for('drop') }}">Drop Course</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main class="p-8">
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
+
+    <footer>
+        <p>&copy; 2024 My App</p>
+    </footer>
 </body>
 </html>
