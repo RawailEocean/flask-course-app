@@ -3,12 +3,8 @@
 {% block title %}Home - My App{% endblock %}
 
 {% block content %}
-    <h2>Welcome to the Student/Teacher Registration App!</h2>
-    <p>Use the navigation above to register students or teachers, view courses, or drop a course.</p>
+    <h2 class="shiny-text">Welcome to the Student/Teacher Registration App!</h2>
+    <p class="shiny-text">Use the navigation above to register students or teachers, view courses, or drop a course.</p>
 
-    <!-- Removed Star Border elements. You can add regular links or buttons here if desired. -->
-    <p>
-        <a href="{{ url_for('register_student_page') }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Register New Student</a>
-        <button style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Important Action</button>
-    </p>
+    <!-- The "Register New Student" link was previously removed -->
 {% endblock %}
