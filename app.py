@@ -43,7 +43,22 @@ def register_teacher_page():
 
 @app.route("/courses")
 def course_list():
-    return render_template("courses.html", courses=courses)
+    # NEW: Organize students by course
+    courses_with_registered_students = {}
+    for course_name in courses: # Initialize with predefined courses
+        courses_with_registered_students[course_name] = []
+    
+    # Add students to their respective courses
+    for student in students:
+        course = student["course"]
+        if course not in courses_with_registered_students:
+            courses_with_registered_students[course] = [] # Add dynamically entered courses
+        courses_with_registered_students[course].append(student)
+
+    # Pass both the original course list and the organized student data
+    return render_template("courses.html", 
+                           courses=courses, # Original list of courses
+                           courses_data=courses_with_registered_students) # New organized data
 
 @app.route("/students")
 def view_students():
