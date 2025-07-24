@@ -14,7 +14,7 @@ main.container {
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
     padding: 40px; /* Increased padding for more breathing room */
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent for better readability */
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly more transparent for better glitch visibility */
     border-radius: 15px; /* Slightly more rounded corners */
     box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* More prominent shadow */
     margin: 40px auto; /* Center the container horizontally and add more vertical margin */
@@ -32,78 +32,7 @@ p {
     margin-bottom: 20px; /* Add space below paragraphs */
 }
 
-/* Star Border styles (from previous request, kept here for completeness) */
-.star-border-container {
-    display: inline-block;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-right: 20px; /* Add space between buttons */
-    margin-top: 20px; /* Add space above buttons */
-}
-
-.border-gradient-bottom {
-    position: absolute;
-    width: 300%;
-    height: 50%;
-    opacity: 0.7;
-    bottom: -12px;
-    right: -250%;
-    border-radius: 50%;
-    animation: star-movement-bottom linear infinite alternate;
-    z-index: 0;
-}
-
-.border-gradient-top {
-    position: absolute;
-    opacity: 0.7;
-    width: 300%;
-    height: 50%;
-    top: -12px;
-    left: -250%;
-    border-radius: 50%;
-    animation: star-movement-top linear infinite alternate;
-    z-index: 0;
-}
-
-.inner-content {
-    position: relative;
-    border: 1px solid #222;
-    background: #000;
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    padding: 16px 26px;
-    border-radius: 20px;
-    z-index: 1;
-    /* Ensure content inside is visible and centered */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px; /* Give buttons a minimum height */
-}
-
-@keyframes star-movement-bottom {
-    0% {
-        transform: translate(0%, 0%);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-100%, 0%);
-        opacity: 0;
-    }
-}
-
-@keyframes star-movement-top {
-    0% {
-        transform: translate(0%, 0%);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(100%, 0%);
-        opacity: 0;
-    }
-}
+/* --- Star Border styles REMOVED --- */
 
 /* Styles for the Glitch Canvas container */
 .glitch-background-container {
@@ -121,7 +50,7 @@ p {
     display: block;
     width: 100%;
     height: 100%;
-    opacity: 0.7; /* Reduced opacity for the glitch effect */
+    opacity: 0.9; /* Increased opacity for the glitch effect */
 }
 
 .glitch-vignette {
