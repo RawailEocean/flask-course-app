@@ -13,25 +13,25 @@ main.container {
     flex: 1;
     z-index: 2; /* Ensure content is above the background glitch */
     position: relative; /* Needed for z-index to work */
-    padding: 40px; /* Increased padding for more breathing room */
-    background-color: transparent; /* Changed to transparent */
+    padding: 40px; /* Padding for the content inside this box */
+    background-color: rgba(255, 255, 255, 0.1); /* Very subtle white transparency */
     border-radius: 15px; /* Slightly more rounded corners */
-    box-shadow: none; /* Removed box shadow as background is transparent */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Subtle shadow for depth */
     margin: 40px auto; /* Center the container horizontally and add more vertical margin */
-    max-width: 90%; /* Limit max width to avoid stretching on very large screens */
-    width: 100%; /* Ensure it takes full available width up to max-width */
+    width: fit-content; /* Shrink-wraps content */
+    max-width: 90%; /* Ensures it doesn't get too wide on large screens */
     box-sizing: border-box; /* Include padding in the element's total width and height */
     color: white; /* Set default text color to white for better contrast */
     text-align: center; /* Center the text within the container */
 }
 
 h2 {
-    color: #b5b5b5a4; /* Base color for shiny text, adjusted for effect */
+    color: white; /* Base color for heading - always visible */
     margin-bottom: 20px; /* Add some space below heading */
 }
 
 p {
-    color: #b5b5b5a4; /* Base color for shiny text, adjusted for effect */
+    color: white; /* Base color for paragraph - always visible */
     margin-bottom: 20px; /* Add space below paragraphs */
 }
 
@@ -111,37 +111,28 @@ footer {
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Add shadow to footer */
 }
 
-/* NEW: Shiny Text CSS */
+/* NEW: Shiny Text CSS (always visible with glow/flicker) */
 .shiny-text {
-    /* The base color of the text when the shine isn't directly over it */
-    color: #b5b5b5a4; /* Adjust this color to change intensity/style */
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 40%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0) 60%
-    );
-    background-size: 200% 100%; /* Makes the gradient wider than the text */
-    -webkit-background-clip: text; /* Clips the background to the text shape */
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes the text itself transparent to show background */
-    display: inline-block; /* Essential for background-clip: text to work properly */
-    animation: shine 5s linear infinite; /* Default animation speed */
-    /* You can use a CSS variable for speed if you want to control it from HTML: */
-    /* animation: shine var(--shine-speed, 5s) linear infinite; */
+    color: white; /* Ensures text is always visible */
+    /* Removed background-clip: text and background gradient */
+    animation: text-glow-flicker 2s linear infinite alternate; /* Apply the new flicker animation */
 }
 
-@keyframes shine {
+@keyframes text-glow-flicker {
     0% {
-        background-position: 100%; /* Start the gradient off to the right */
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), /* Cyan glow */
+                     0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), /* Stronger cyan glow */
+                     0 0 20px rgba(0, 255, 255, 0.6),
+                     0 0 30px rgba(255, 0, 255, 0.4); /* Magenta secondary glow */
     }
     100% {
-        background-position: -100%; /* Move the gradient off to the left */
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+                     0 0 10px rgba(0, 255, 255, 0.3);
     }
 }
-
-/* .shiny-text.disabled { animation: none; } */
-/* If you need to disable the animation, you'd add/remove this class with JavaScript */
 
 /* Adjust font sizes for better visual impact with shiny effect */
 h2.shiny-text {
