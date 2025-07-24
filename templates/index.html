@@ -1,20 +1,12 @@
-{% extends "base.html" %}
-
-{% block title %}Home - My App{% endblock %}
-
+v{% extends "base.html" %}
+{% block title %}Home - FlaskCourse{% endblock %}
 {% block content %}
-    <h2>Welcome to the Student/Teacher Registration App!</h2>
-    <p>Use the navigation above to register students or teachers, view courses, or drop a course.</p>
-
-    <a href="{{ url_for('register_student_page') }}" class="star-border-container" style="--color: #00ffcc; --speed: 5s;">
-        <div class="border-gradient-bottom" style="background: radial-gradient(circle, var(--color), transparent 10%); animation-duration: var(--speed);"></div>
-        <div class="border-gradient-top" style="background: radial-gradient(circle, var(--color), transparent 10%); animation-duration: var(--speed);"></div>
-        <div class="inner-content">Register New Student</div>
-    </a>
-
-    <button class="star-border-container" style="--color: #ff3366; --speed: 7s; margin-left: 20px;">
-        <div class="border-gradient-bottom" style="background: radial-gradient(circle, var(--color), transparent 10%); animation-duration: var(--speed);"></div>
-        <div class="border-gradient-top" style="background: radial-gradient(circle, var(--color), transparent 10%); animation-duration: var(--speed);"></div>
-        <div class="inner-content">Important Action</div>
-    </button>
+<div class="text-center mt-20">
+    <h2 class="text-5xl font-bold mb-4">Welcome to Flask Course Portal</h2>
+    <p class="text-lg">Register for your courses, meet your teachers, and manage everything easily.</p>
+    <div class="mt-8 space-x-4">
+        <a href="/register/student" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-opacity-80 transition">Register as Student</a>
+        <a href="/register/teacher" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition">Register as Teacher</a>
+    </div>
+</div>
 {% endblock %}
